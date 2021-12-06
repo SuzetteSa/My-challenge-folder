@@ -59,15 +59,19 @@ li {
   margin-bottom: 20px;
 }
 
-.card-body{
-  background: linear-gradient(
-    172deg,
-    rgb(243, 178, 48) 0%,
-    rgb(139, 102, 241) 100%
-  );
+.card{
+  margin-right: auto;
+    margin-left: auto;
+    width: 250px;
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+    border-radius: 5px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    
 
 }
 
 .button{
-  
+  display:block
 }
