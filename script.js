@@ -1,19 +1,26 @@
-let now = new Date();
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = now.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[now.getDay()];
 
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+  return `${day}, ${hour}:${minute}`;
 }
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
-
-let currentDayTime = document.querySelector("#todayDayTime");
-
-currentDayTime.innerHTML = `${day}, ${hour}:${minute}`;
 
 function searchCity(event) {
   event.preventDefault();
@@ -31,15 +38,24 @@ let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
 
 function displayWeather(response) {
-  console.log(response);
-
-  let temperature = Math.round(response.data.main.temp);
+  console.log(response.data.daily);
   let currentTemp = document.querySelector("#main-temperature");
-  currentTemp.innerHTML = `${temperature}`;
-
-  let description = response.data.weather[0].description;
   let currentDescription = document.querySelector("#tempDescription");
-  currentDescription.innerHTML = `${description}`;
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#todayDayTime");
+  let iconElement = document.querySelector("#icon");
+
+  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  currentDescription.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 navigator.geolocation.getCurrentPosition(handlePosition);
