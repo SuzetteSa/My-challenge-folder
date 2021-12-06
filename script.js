@@ -22,31 +22,19 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function searchCity(event) {
-  event.preventDefault();
-  let input = document.querySelector("#city-input");
-  let h5 = document.querySelector("h5");
-  h5.innerHTML = `${input.value}`;
-  console.log(input.value);
-  let apiKey = "6f65a5e46f3b9a6f53fba583f75e2f9a";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(displayWeather);
-}
-
-let form = document.querySelector("form");
-form.addEventListener("submit", searchCity);
-
 function displayWeather(response) {
-  console.log(response.data.daily);
   let currentTemp = document.querySelector("#main-temperature");
+  let cityElement = document.querySelector("#city")
   let currentDescription = document.querySelector("#tempDescription");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#todayDayTime");
   let iconElement = document.querySelector("#icon");
 
+  celsiusTemperature = response.data.main.temp;
+
   currentTemp.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
   currentDescription.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -58,7 +46,26 @@ function displayWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-navigator.geolocation.getCurrentPosition(handlePosition);
+function search(city){
+let input = document.querySelector("#city-input");
+let apiKey = "6f65a5e46f3b9a6f53fba583f75e2f9a";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayWeather);
+}
+
+function searchCity(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+
+
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchCity);
+
+
 
 function handlePosition(position) {
   console.log(position.coords.latitude);
@@ -83,14 +90,31 @@ function getLocation(event) {
 
 function displayfahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheiTemperature = (14 * 9) / 5 + 32;
+  let fahrenheiTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
 
   let temperatureElement = document.querySelector("#main-temperature");
-  (temperatureElement.innerHTML = Math), round(fahrenheiTemperature);
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
 }
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
 
 let nowlocation = document.querySelector(".button");
 nowlocation.addEventListener("click", getLocation);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayfahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+
+
+
+
+
+navigator.geolocation.getCurrentPosition(handlePosition);
