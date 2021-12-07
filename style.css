@@ -85,3 +85,7 @@ li {
   font-size: 16px;
   color:rgb(15, 15, 15)
 }
+
+.weather-forecast-temperatures{
+  font-size: 13px
+}
