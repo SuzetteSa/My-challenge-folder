@@ -74,3 +74,14 @@ li {
 .button {
   display: block;
 }
+
+.weather-forecast{
+  margin-top: 20px;
+  text-align: center;
+
+}
+
+.weather-forecast-date{
+  font-size: 16px;
+  color:rgb(15, 15, 15)
+}
