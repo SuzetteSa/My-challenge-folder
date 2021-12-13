@@ -22,6 +22,11 @@ function formatDay(timestamp) {
   return days[day];
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = "Forecast"
+}
+
 function displayWeather(response) {
   let currentTemp = document.querySelector("#main-temperature");
   let cityElement = document.querySelector("#city")
@@ -112,3 +117,5 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 navigator.geolocation.getCurrentPosition(handlePosition);
+
+displayForecast()
