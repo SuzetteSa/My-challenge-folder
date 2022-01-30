@@ -5,7 +5,8 @@ body {
     rgb(243, 178, 48) 0%,
     rgb(139, 102, 241) 100%
   );
-  background-size: cover;
+  background-size:auto;
+ 
 }
 
 h1 {
