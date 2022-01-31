@@ -23,3 +23,10 @@ function getCurrentPosition(response) {
 function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(handlePosition);
+
+
+navigator.geolocation.getCurrentPosition(handlePosition);
+
+
+let nowlocation = document.querySelector(".button");
+nowlocation.addEventListener("click", getLocation)
