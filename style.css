@@ -5,16 +5,14 @@ body {
     rgb(243, 178, 48) 0%,
     rgb(139, 102, 241) 100%
   );
-  background-size:auto;
- 
-}
+ }
 
 h1 {
   color: white;
   font-size: 24px;
   font-weight: 100;
   line-height: 28px;
-  margin: 0;
+  margin-bottom: 0;
 }
 
 ul {
@@ -32,10 +30,14 @@ li {
   text-transform: capitalize;
 }
 
+.weather-app-wrapper{
+  max-width: fit-content;
+  margin: 20px auto;
+}
+
 .weather-app {
   border: 1px solid #a47ad4;
   padding: 15px;
-  margin: 20px auto;
   border-radius: 10px;
 }
 
@@ -64,12 +66,12 @@ li {
 .card {
   margin-right: auto;
   margin-left: auto;
-  width: 250px;
+  width: 100px;
   box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
   border-radius: 5px;
   backdrop-filter: blur(14px);
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 10px;
+  padding: 5px;
 }
 
 .button {
@@ -79,6 +81,7 @@ li {
 .weather-forecast{
   margin-top: 20px;
   text-align: center;
+  color: #000;
 
 }
 
@@ -89,4 +92,8 @@ li {
 
 .weather-forecast-temperatures{
   font-size: 13px
+}
+
+.weather-forecast-temp-min{
+  opacity: 0.5;
 }
