@@ -1,10 +1,7 @@
 body {
+  margin:auto;
   font-family: arial, sans-serif;
-  background: linear-gradient(
-    172deg,
-    rgb(243, 178, 48) 0%,
-    rgb(139, 102, 241) 100%
-  );
+
  }
 
 h1 {
@@ -38,7 +35,8 @@ li {
 .weather-app {
   border: 1px solid #a47ad4;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 10px; 
+
 }
 
 .weather-icon {
@@ -64,18 +62,20 @@ li {
 }
 
 .card {
-  margin-right: auto;
-  margin-left: auto;
-  width: 100px;
   box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
   border-radius: 5px;
-  backdrop-filter: blur(14px);
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 5px;
+  padding: 5px; 
+  background:linear-gradient(
+    172deg,
+    rgb(243, 178, 48) 20%,
+    rgb(139, 102, 241) 80%
+  );
 }
 
-.button {
+.btn {
   display: block;
+  background-color:#9970D6
 }
 
 .weather-forecast{
