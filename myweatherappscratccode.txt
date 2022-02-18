@@ -1,7 +1,7 @@
-https://api.openweathermap.org/data/2.5/onecall?lat={32.5764127}&lon={-96.9314357}&appid=${6f65a5e46f3b9a6f53fba583f75e2f9a}&units=metric
+https://api.openweathermap.org/data/2.5/onecall?lat={32.5764127}&lon={-96.9314357}&appid=6f65a5e46f3b9a6f53fba583f75e2f9a&units=metric
 
 
-https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={6f65a5e46f3b9a6f53fba583f75e2f9a}
+https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&appid=6f65a5e46f3b9a6f53fba583f75e2f9a&units=metric
 
 
 function handlePosition(position) {
@@ -30,3 +30,10 @@ navigator.geolocation.getCurrentPosition(handlePosition);
 
 let nowlocation = document.querySelector(".button");
 nowlocation.addEventListener("click", getLocation)
+
+
+background: linear-gradient(
+    172deg,
+    rgb(243, 178, 48) 0%,
+    rgb(139, 102, 241) 100%
+  );
