@@ -75,7 +75,8 @@ li {
 
 .btn {
   display: block;
-  background-color:#9970D6
+  background-color:#9970D6;
+  padding: 10px;
 }
 
 .weather-forecast{
